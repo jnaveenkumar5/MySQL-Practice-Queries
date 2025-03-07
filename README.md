@@ -53,7 +53,9 @@ desc employees;
 select * from customer;
 insert customer values(1,'fhhks','gmailhksjfk@gmail.com',2500,300);
  insert customer values(5,'kumar','isjfk@gmail.com',2500,677);
- -- sql joins
+```
+ ## sql joins
+ ```
  create table cricket(cricket_id int auto_increment,name varchar(30),primary key(cricket_id));
  
   create table football(football_id int auto_increment,name varchar(30),primary key(football_id));
@@ -67,12 +69,10 @@ SELECT * from cricket as c inner join
 football as f on c.name=f.name;
 select c.cricket_id,c.name,f.football_id,f.name from
 cricket as c right join football as f using(name);  
-
-use sql_intro;
-show tables;
 ```
 ## DDL commands
-```
+use sql_intro;
+show tables;
 -- create command
 create table employees(
   empid int auto_increment primary key,
