@@ -71,6 +71,7 @@ select c.cricket_id,c.name,f.football_id,f.name from
 cricket as c right join football as f using(name);  
 ```
 ## DDL commands
+```
 use sql_intro;
 show tables;
 -- create command
@@ -122,6 +123,9 @@ select first_value(job) over (partition by job order by sal asc) as highestpaid,
    select dense_rank() over (order by sal desc) as dense_rank_num,sal,job,deptno,mgr from emp;
     select * from emp where sal=(select max(sal) from emp);
     select max(sal) as second_highest_salary from emp where sal < (select max(sal) from emp);
+```
+## creating New table dept
+```
     use sql_intro;
 create table dept(   
   deptno     int(20),   
@@ -150,6 +154,9 @@ create table emp(
   constraint pk_emp primary key (empno),   
   constraint fk_deptno foreign key (deptno) references dept (deptno)   
 );
+```
+## Inserting values
+```
 INSERT INTO emp
 VALUES
 (7839, 'KING', 'PRESIDENT', NULL, 
