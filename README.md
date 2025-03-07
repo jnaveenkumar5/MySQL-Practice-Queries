@@ -1,4 +1,5 @@
 # MySQL-Practice-Queries
+```
 create database sql_intro;
 show databases;
 use sql_intro;
@@ -207,5 +208,5 @@ VALUES
  select * from emp;
  select ename,job,sum(sal) as total_salary from emp group by ename,job with rollup;
  select * from emp order by sal desc limit 1;
- 
+``` 
     
