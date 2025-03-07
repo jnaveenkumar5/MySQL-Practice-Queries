@@ -1,14 +1,20 @@
 # MySQL-Practice-Queries
+## Creating database
 ```
 create database sql_intro;
 show databases;
 use sql_intro;
+```
+## Creating Table
+```
 create table emp_details(Name varchar(20),Age int,Sex char(1),
 doj date,City varchar(20),Salary float);
-
 describe emp_details;
 show databases;
 use sql_intro;
+```
+## inserting Table values
+```
 insert into emp_details
 values("kumar",23,"M","2002-08-05",20000),
        ("Nikil",35,"M","2022-08-13","skl",15000),
@@ -23,6 +29,9 @@ select lower('kUMARABAar');
 select curdate();
 select year('2025-1-14')
 select concat('hello','    ','world')
+```
+## Time and date Formates
+```
 select day(current_date());
 select year(now());
 select ifnull(23,'default value') as result;
@@ -35,8 +44,9 @@ select current_timestamp();
 select date_format(now(),'%W-%M%d-%y');
 alter table emp_details add email varchar(50);
 select * from emp_details where salary like '15000';
-
-# primary key ,check,unique,notnull
+```
+## primary key ,check,unique,notnull
+```
 create table customer(emp_id int primary key, Name varchar(50) not null, email varchar(100) unique ,
 salary decimal(10,2), price decimal(10,2) check (price>0));
 desc employees;
@@ -60,7 +70,9 @@ cricket as c right join football as f using(name);
 
 use sql_intro;
 show tables;
--- DDL commands
+```
+## DDL commands
+```
 -- create command
 create table employees(
   empid int auto_increment primary key,
@@ -81,7 +93,9 @@ create table employees(
   -- rename command
   rename table employees to staff;
     select * from staff;
--- DML commands
+```
+## DML commands
+```
 -- insert command
 insert into staff
 values(null,'naveen','kumar','2020-1-5',25000,'hjdgmail.com');
@@ -98,6 +112,9 @@ select * from staff;
   -- Delete
   delete from staff where empid=1;
   select * from emp;
+```
+## Window Functions
+```
   select row_number() over (partition by job order by sal desc) as rownumder,ename,sal,job,deptno,mgr from emp;
 select first_value(job) over (partition by job order by sal asc) as highestpaid,ename,sal,job,deptno,mgr from emp;
   select lag(sal) over (order by sal desc) as Next_salary,ename,sal,job,deptno,mgr from emp;
@@ -208,5 +225,37 @@ VALUES
  select * from emp;
  select ename,job,sum(sal) as total_salary from emp group by ename,job with rollup;
  select * from emp order by sal desc limit 1;
-``` 
+```
+## Agregate functions
+```
+SELECT * FROM sql_intro.emp;
+# agregate functions
+select job,
+count(*) as total_empnumbers,
+avg(sal) as average_salary,
+sum(sal) as total_salary,
+max(sal) as maximum_sal,
+min(sal) as mini_sal from emp group by job;
+```
+## case statement
+```
+select ename,sal,
+case 
+    when sal<1000 then 'Low'
+    when sal between 1000 and 3000 then 'Medium'
+    else 'High'
+end as salary_category
+from emp;
+```
+## if statement
+```
+select ename,sal,
+if(sal>3000 ,'Eligible','Not Eligible') as bonus_status
+from emp;
+```
+## ifnull 
+```
+select ename,sal,comm,ifnull(comm,0) as comm_zero from emp;
+```   
+
     
